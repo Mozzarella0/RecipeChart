@@ -3,7 +3,7 @@
 
     <div class="ui form">
       <div class="field">
-        <textarea style="height: 150px;" id="chartData" >terminal=開始;{ String.fromCharCode(13); }</textarea>
+        <textarea style="height: 150px;" id="chartData" >terminal:開始;{ String.fromCharCode(13); }</textarea>
       </div>
     </div>
     <p></p>
@@ -31,27 +31,27 @@
     };
 
     this.writeTerminal = () => {
-      document.getElementById('chartData').value += 'terminal=;' + String.fromCharCode(13);
+      document.getElementById('chartData').value += 'terminal:;' + String.fromCharCode(13);
     };
 
     this.writeProcess = () => {
-      document.getElementById('chartData').value += 'process=;' + String.fromCharCode(13);
+      document.getElementById('chartData').value += 'process:;' + String.fromCharCode(13);
     };
 
     this.writeDecision = () => {
-      document.getElementById('chartData').value += 'decision=;' + String.fromCharCode(13);
+      document.getElementById('chartData').value += 'decision:;' + String.fromCharCode(13);
     };
 
     this.writeInput = () => {
-      document.getElementById('chartData').value += 'input=;' + String.fromCharCode(13);
+      document.getElementById('chartData').value += 'input:;' + String.fromCharCode(13);
     };
 
     this.writeLoopstart = () => {
-      document.getElementById('chartData').value += 'loop-start;' + String.fromCharCode(13) + String.fromCharCode(13);
+      document.getElementById('chartData').value += 'loop-start:;' + String.fromCharCode(13) + String.fromCharCode(13);
     };
 
     this.writeLoopend = () => {
-      document.getElementById('chartData').value += 'loop-end;' + String.fromCharCode(13);
+      document.getElementById('chartData').value += 'loop-end:;' + String.fromCharCode(13);
     };
 
 

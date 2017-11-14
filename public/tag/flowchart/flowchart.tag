@@ -16,7 +16,7 @@
     console.log(row);
     for (let i=0; i < row.length - 1; i++) {
       const obj = {};
-      const gr = row[i].split('=');
+      const gr = row[i].split(':');
       console.log(gr);
       obj.class = gr[0];
       obj.value = gr[1];
@@ -96,14 +96,79 @@
       z-index: 1;
     }
 
+    .input {
+      width: 190px;
+    	height: 50px;
+    	-webkit-transform: skew(-20deg);
+      -moz-transform: skew(-20deg);
+      -o-transform: skew(-20deg);
+      background: #333333;
+      margin: auto;
+      margin-top: 20px;
+    }
+
     .loop-start {
+      width: 190px;
+      height: 25px;
+      background-color: #333333;
+      margin: auto;
+      margin-top: 45px;
+    }
 
+    .loop-start:after{
+      content: '';
+      position: absolute;
+      top: -50px;
+      bottom: 0;
+      width: 190px;
+      height: 50px;
+      border-bottom: 25px solid #333333;
+    	border-left: 25px solid transparent;
+    	border-right: 25px solid transparent;
+    }
 
+    .loop-start i {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      color: #fff;
+      z-index: 1;
     }
 
     .loop-end {
+      width: 190px;
+      height: 25px;
+      background-color: #333333;
+      margin: auto;
+      margin-top: 20px;
+    }
 
+    .loop-end:after{
+      content: '';
+      position: absolute;
+      top: 25px;
+      bottom: 0;
+      width: 190px;
+      height: 50px;
+      border-top: 25px solid #333333;
+    	border-left: 25px solid transparent;
+    	border-right: 25px solid transparent;
+    }
 
+    .loop-end i {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      line-height: 200px;
+      text-align: center;
+      color: #fff;
+      z-index: 1;
     }
   </style>
 
