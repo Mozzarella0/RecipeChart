@@ -1,6 +1,6 @@
 <app-auth>
   <div class="container">
-  <h2>Sign In</h2>
+  <h2>ログイン</h2>
   <div class="column">
     <!-- ログインフォーム start -->
     <form class="ui large form">
@@ -18,7 +18,7 @@
           </div>
         </div>
         <button class="ui fluid large orange submit button" onclick="signin()">
-          Login
+          ログイン
         </button>
       </div>
     </form>

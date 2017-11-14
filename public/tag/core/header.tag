@@ -3,31 +3,28 @@
     <div class="ui fixed inverted borderless menu">
       <a class="ui inverted grey button btn-text" href="/" if="{ !user }">
         <i class="book icon"></i>
-        Home
+        ホーム
       </a>
       <a class="ui inverted grey button btn-text" href="/recipehome" if="{ user }">
         <i class="book icon"></i>
-        Home
+        ホーム
       </a>
       <a class="ui inverted orange button btn-text" href="/mypage" if="{ user }">
         <i class="user icon"></i>
-        My Page
+        マイページ
       </a>
       <a class="ui inverted orange button btn-text" href="/recipe" if="{ user }">
         <i class="write icon"></i>
-        Create Recipe
-      </a>
-      <a href = "/recipe">
-        recipe
+        レシピ
       </a>
       <div class="right menu">
         <a class="ui inverted orange button btn-text" href="/auth" if="{ !user }">
           <i class="user icon"></i>
-          Sign in
+          ログイン
         </a>
-        <a class="ui inverted red button btn-text" onclick="{ signout() }" if="{ user }">
+        <a class="ui inverted red button btn-text" onclick="{ signout }" if="{ user }">
           <i class="sign out icon"></i>
-          Sign out
+          ログアウト
         </a>
       </div>
     </div>
@@ -55,6 +52,7 @@
       // Sign-out successful.
       this.isUser = true;
       route('/');
+      route('header');
     }).catch(function(error) {
       // An error happened.
     });

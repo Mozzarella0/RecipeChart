@@ -16,7 +16,7 @@
     console.log(row);
     for (let i=0; i < row.length - 1; i++) {
       const obj = {};
-      const gr = row[i].split(':');
+      const gr = row[i].split('=');
       console.log(gr);
       obj.class = gr[0];
       obj.value = gr[1];
@@ -96,7 +96,7 @@
       z-index: 1;
     }
 
-    .input {
+    .inoutput {
       width: 190px;
     	height: 50px;
     	-webkit-transform: skew(-20deg);

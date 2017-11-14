@@ -26,6 +26,9 @@
     });
 
     //ルーティング
+    route('header', () => {
+      riot.mount('app-header', 'app-header');
+    });
     route('/', () => {
       riot.mount('#content', 'app-home');
     });
