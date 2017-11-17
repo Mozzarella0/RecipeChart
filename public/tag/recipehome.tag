@@ -1,11 +1,26 @@
 <app-recipehome>
   <div class="container">
-    <h2>New Recipes</h2>
-    <hr></hr>
-    <h2>Favo Creator Recipes</h2>
+    <h2>Recipes</h2>
+    <div each="{ key,data in recipeData }" class="recipeBlock" >
+      <div class="{ key }">
+        <i>{ data.creator }</i>
+      </div>
+    </div>
+
   </div>
+  
 
   <script>
+    const recipes = firebase.database().ref('recipeData');
+    this.recipeData = {};
+
+    recipes.on('value', function(recipe) {
+      if(recipe.val()) {
+        this.recipeData = recipe.val();
+      }else{
+
+      }
+    });
 
   </script>
 

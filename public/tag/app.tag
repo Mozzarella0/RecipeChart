@@ -7,30 +7,27 @@
   <app-footer></app-footer>
 
   <script>
-    const userData = {};
-    var user;
+    var userData = {};
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        user = true;
-        this.displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
+        userData = user;
+        // const displayName = user.displayName;
+        // var email = user.email;
+        // var emailVerified = user.emailVerified;
+        // var photoURL = user.photoURL;
+        // var isAnonymous = user.isAnonymous;
+        // var uid = user.uid;
+        // var providerData = user.providerData;
         this.update();
       } else {
-
+        userData = null;
       }
     });
 
     //ルーティング
-    route('header', () => {
-      riot.mount('app-header', 'app-header');
-    });
     route('/', () => {
-      riot.mount('#content', 'app-home');
+      riot.mount('#content', 'app-home', {userData : userData});
+      riot.mount('app-header', 'app-header');
     });
     route('/auth', () => {
       riot.mount('#content', 'app-auth');
@@ -39,10 +36,10 @@
       riot.mount('#content', 'app-mypage');
     });
     route('/recipehome', () => {
-      riot.mount('#content', 'app-recipehome')
+      riot.mount('#content', 'app-recipehome');
     });
     route('/recipe', () => {
-      riot.mount('#content', 'app-recipe')
+      riot.mount('#content', 'app-recipe', {userData : userData});
     });
 
   </script>

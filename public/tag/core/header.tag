@@ -22,24 +22,36 @@
           <i class="user icon"></i>
           ログイン
         </a>
-        <a class="ui inverted red button btn-text" onclick="{ signout }" if="{ user }">
+        <div if="{ user }">
+          { displayName } さん
+        </div>
+        
+        <div class="ui teal buttons">
+          <div class="ui button">Save</div>
+          <div class="ui floating dropdown icon button">
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item"><i class="edit icon"></i> Edit Post</div>
+              <div class="item"><i class="delete icon"></i> Remove Post</div>
+              <div class="item"><i class="hide icon"></i> Hide Post</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <a class="ui inverted red button btn-text" onclick="{ signout }" if="{ user }">
           <i class="sign out icon"></i>
           ログアウト
-        </a>
+        </a> -->
       </div>
     </div>
   </div>
 
   <script>
+
     firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       this.displayName = user.displayName;
-      var email = user.email;
-      var emailVerified = user.emailVerified;
-      var photoURL = user.photoURL;
-      var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
-      var providerData = user.providerData;
+      this.photoURL = user.photoURL;
       this.user = true;
       this.update()
     } else {
@@ -52,7 +64,6 @@
       // Sign-out successful.
       this.isUser = true;
       route('/');
-      route('header');
     }).catch(function(error) {
       // An error happened.
     });

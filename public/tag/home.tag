@@ -14,7 +14,10 @@
   </div>
 
   <script>
-
+    if(opts.userData){
+      console.log(opts.userData);
+      // route('/recipehome');
+    }
   </script>
 
   <style>
@@ -48,7 +51,6 @@
       font-size: 40px;
       color: white;
     }
-
 
   </style>
 

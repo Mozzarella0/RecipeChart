@@ -3,3 +3,10 @@ riot.compile(function(){
   route.base('/'); //urlのベース
   route.start(true); //url監視
 });
+
+window.onload = function(){
+	$(function() {
+		$(".loadcon").fadeOut();
+		$(".app").fadeIn();
+	});
+}

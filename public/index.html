@@ -7,17 +7,17 @@
   <title>RecipeChart</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
   <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
 </head>
 
 <body>
-  <app></app>
+  <div class="ui active dimmer loadcon">
+    <div class="ui large text loader">Loading</div>
+  </div>
+  <app class="app" style="display: none;"></app>
   <!-- ここに作ったタグ全部読み込む -->
   <script type="riot/tag" src="tag/app.tag"></script>
   <script type="riot/tag" src="tag/home.tag"></script>
@@ -32,8 +32,8 @@
   <script src="https://cdn.jsdelivr.net/npm/riot@3.7/riot+compiler.min.js"></script>
   <script src="https://rawgit.com/riot/route/master/dist/route+tag.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.4/riot+compiler.min.js"></script>
   <script src="./main.js"></script>
   <script src="./config.js"></script>

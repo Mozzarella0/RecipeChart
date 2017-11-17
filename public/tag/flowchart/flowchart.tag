@@ -13,16 +13,15 @@
     this.chartData = {};
     const row = opts.text.split(';');
 
-    console.log(row);
     for (let i=0; i < row.length - 1; i++) {
       const obj = {};
       const gr = row[i].split('=');
-      console.log(gr);
       obj.class = gr[0];
       obj.value = gr[1];
       this.chartData[i] = obj;
-      console.log(this.chartData);
+
     }
+    console.log(this.chartData);
 
   </script>
 
