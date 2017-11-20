@@ -1,44 +1,52 @@
 <app-header>
   <div class="ui grid">
     <div class="ui fixed inverted borderless menu">
-      <a class="ui inverted grey button btn-text" href="/" if="{ !user }">
-        <i class="desktop icon"></i>
-        ホーム
+      <a class="header item" href="/" if="{ !user }">
+        <h4>
+          <i class="large industry icon"></i>
+          RecipeChart
+        </h4>
       </a>
-      <a class="ui inverted grey button btn-text" href="/recipehome" if="{ user }">
-        <i class="desktop icon"></i>
-        ホーム
+      <div class="header item" if="{ user }">
+        <h4>
+          <i class="large industry orange icon"></i>
+          RecipeChart
+        </h4>
+      </div>
+      <a class="header item" data-toggle="tooltip" title="View Recipe" href="/recipehome" if="{ user }">
+        <i class="large book icon" if="{ !opts.recipehome }"></i>
+        <i class="large book orange icon" if="{ opts.recipehome }"></i>
       </a>
-      <a class="ui inverted grey button btn-text" href="/recipe" if="{ user }">
-        <i class="write icon"></i>
-        つくる
+      <a class="header item" data-toggle="tooltip" title="Write Recipe" href="/recipe" if="{ user }">
+        <i class="large write icon" if="{ !opts.recipe }"></i>
+        <i class="large write orange icon" if="{ opts.recipe }"></i>
       </a>
-      <div class="right menu">
+
+      <div class="right menu item">
         <a class="ui inverted orange button btn-text" href="/auth" if="{ !user }">
           <i class="user icon"></i>
           ログイン
         </a>
-        <div if="{ user }">
-          <div class="ui compact menu userbtn">
-            <div class="ui simple dropdown item">
-              <img class="ui avatar image" src="{ photoURL }">
-              <span class="username">{ displayName }さん</span>
-              <i class="dropdown icon"></i>
-              <div class="menu">
-                <a class="item" href="/mypage">
-                  <i class="book icon"></i>
-                  マイレシピ
-                </a>
-                <a class="item">
-                  <i class="options icon" href="#"></i>
-                  設定
-                </a>
-                <div class="item" onclick="{ signout }">
-                  <a class="ui inverted red button">
-                    <i class="sign out icon" ></i>
-                    ログアウト
-                  </a>
-                </div>
+        <div if="{ user }"> <!-- ユーザーメニュードロップダウン -->
+
+          <div class="ui simple dropdown">
+            <img class="ui avatar image" src="{ photoURL }"></img>
+            <span class="username">{ displayName } さん</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <a class="item" href="/mypage">
+                <i class="book icon"></i>
+                マイレシピ
+              </a>
+              <a class="item">
+                <i class="options icon" href="#"></i>
+                設定
+              </a>
+              <div class="ui divider"></div>
+              <a class="item" onclick="{ signout }">
+                <i class="sign out icon" ></i>
+                ログアウト
+              </a>
               </div>
             </div>
           </div>
@@ -46,7 +54,6 @@
 
       </div>
     </div>
-  </div>
 
   <script>
 
@@ -74,13 +81,7 @@
   </script>
 
   <style>
-    .username {
-      color: black;
-    }
 
-    .userbtn {
-      height: 32px;
-    }
   </style>
 
 

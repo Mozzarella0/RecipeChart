@@ -1,43 +1,60 @@
 <app-recipe>
-  <div class="container">
-    <div class="field">
-      <div class="ui left icon input">
-        <i class="book icon"></i>
-        <input placeholder="Recipe Name" id="recipeName" value="NewRecipe"></input>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui left icon input">
-        <i class="comment outline icon"></i>
-        <input placeholder="Comment" id="recipeComment"></input>
-      </div>
-    </div>
-
-    <div class="ui buttons">
-      <button class="ui black button btn-text" data-toggle="tooltip" title="開始 / 終了" onClick="{ writeTerminal }">Terminal</button>
-      <button class="ui black button btn-text" data-toggle="tooltip" title="処理" onClick="{ writeProcess }">Process</button>
-      <button class="ui black button btn-text" data-toggle="tooltip" title="判断" onClick="{ writeDecision }">Decision</button>
-      <button class="ui black button btn-text" data-toggle="tooltip" title="データ" onClick="{ writeInput }">Input / Output</button>
-      <button class="ui black button btn-text" data-toggle="tooltip" title="ループ（開始）" onClick="{ writeLoopstart }">Loop-Start</button>
-      <button class="ui black button btn-text" data-toggle="tooltip" title="ループ（終了）" onClick="{ writeLoopend }">Loop-End</button>
-    </div>
-    <button class="ui orange button btn-text" onClick="{ add }">Done</button>
-    <p>
-      <div class="ui form">
-        <div class="field">
-          <textarea style="height: 150px;" id="chartData" >terminal=開始;{ String.fromCharCode(13); }</textarea>
+  <div class="ui container">
+    <div class="ui form">
+      <h3 class="ui dividing header">Write Recipe</h3>
+      <div class="field">
+        <label>レシピの名前</label>
+        <div class="ui left icon input">
+          <i class="book icon"></i>
+          <input placeholder="type here" id="recipeName" value="NewRecipe"></input>
         </div>
       </div>
-      <hr></hr>
+      <div class="field">
+        <label>コメント</label>
+        <div class="ui left icon input">
+          <i class="comment outline icon"></i>
+          <input placeholder="type here" id="recipeComment"></input>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui buttons">
+          <button class="ui black button btn-text" data-toggle="tooltip" title="開始 / 終了" onClick="{ writeTerminal }">Terminal</button>
+          <button class="ui black button btn-text" data-toggle="tooltip" title="処理" onClick="{ writeProcess }">Process</button>
+          <button class="ui black button btn-text" data-toggle="tooltip" title="判断" onClick="{ writeDecision }">Decision</button>
+          <button class="ui black button btn-text" data-toggle="tooltip" title="データ" onClick="{ writeInput }">Input / Output</button>
+          <button class="ui black button btn-text" data-toggle="tooltip" title="ループ（開始）" onClick="{ writeLoopstart }">Loop-Start</button>
+          <button class="ui black button btn-text" data-toggle="tooltip" title="ループ（終了）" onClick="{ writeLoopend }">Loop-End</button>
+        </div>
+        <button class="ui orange button btn-text" onClick="{ add }">Done</button>
+      </div>
+
+      <div class="field">
+        <textarea style="height: 150px;" id="chartData" >terminal=開始;{ String.fromCharCode(13); }</textarea>
+      </div>
+
+      <div class="field">
+        <i class="big plus link orange icon" onclick="{ addProcess }"></i>
+      </div>
+
+      <div class="unit"></div>
+
+      <div class="ui divider"></div>
       <a class="ui button btn-text" onClick="{ refresh }">
         <i class="Refresh icon"></i>
         Refresh
       </a>
       <div class="flowChart"></div>
-    </p>
+    </div>
   </div>
 
   <script>
+    var chartForm = [];
+
+    this.addProcess = () => {
+      chartForm.push("test");
+      riot.mount('.unit', 'process', { chartForm : chartForm });
+    };
+
     const textRef = firebase.database().ref('/recipeData');
     textRef.on('value',(res)=>{
       console.log(res.val());

@@ -1,6 +1,6 @@
 <flowchart>
 
-  <div class="container">
+  <div class="ui container">
     <div each="{ index, data in chartData}" class="outside">
       <div class="{ data.class }">
         <i>{ data.value }</i>
@@ -21,7 +21,6 @@
       this.chartData[i] = obj;
 
     }
-    console.log(this.chartData);
 
   </script>
 

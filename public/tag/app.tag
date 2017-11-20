@@ -37,9 +37,11 @@
     });
     route('/recipehome', () => {
       riot.mount('#content', 'app-recipehome');
+      riot.mount('app-header', 'app-header', {recipehome : 1});
     });
     route('/recipe', () => {
       riot.mount('#content', 'app-recipe', {userData : userData});
+      riot.mount('app-header', 'app-header', {recipe : 1});
     });
 
   </script>

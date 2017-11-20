@@ -1,7 +1,7 @@
 <app-auth>
-  <div class="container">
-  <h2>ログイン</h2>
-  <div class="column">
+  <div class="ui container loginform">
+    <h2>ログイン</h2>
+
     <!-- ログインフォーム start -->
     <form class="ui large form">
       <div class="ui segment">
@@ -21,60 +21,26 @@
           ログイン
         </button>
       </div>
+      <div class="ui error message"></div>
     </form>
     <!-- ログインフォーム end -->
 
     <div class="ui message">
       <p>アカウントを持っていませんか？<a data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
     </div>
-  </div>
 
-    <hr></hr>
+
+    <div class="ui divider"></div>
 
     <button class="ui google plus button" onclick="{ googleAuth }">
       <i class="google icon"></i>
       Login with Google
     </button>
-    <button class="ui twitter button">
+      <button class="ui twitter button">
       <i class="twitter icon"></i>
       Login with Twitter
     </button>
   </div>
-
-  <!-- サインアップモーダル start -->
-  <div class="modal fade" id="signUpModal" tabindex="-1">
-  	<div class="modal-dialog">
-  		<div class="modal-content">
-  			<div class="modal-header">
-  				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-  				<h2 class="modal-title">Sign Up</h2>
-  			</div>
-  			<div class="modal-body">
-  				<form class="ui large form">
-            <div class="ui segment">
-              <div class="field">
-                <div class="ui left icon input">
-                  <i class="user icon"></i>
-                  <input type="text" name="email" placeholder="E-mail address"></input>
-                </div>
-              </div>
-              <div class="field">
-                <div class="ui left icon input">
-                  <i class="lock icon"></i>
-                  <input type="password" name="password" placeholder="Password"></input>
-                </div>
-              </div>
-              <hr></hr>
-              <button class="ui fluid large orange submit button" onclick="signup()">
-                Sign Up
-              </button>
-            </div>
-          </form>
-  			</div>
-  		</div>
-  	</div>
-  </div>
-  <!-- サインアップモーダル end -->
 
   <script>
     //email login

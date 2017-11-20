@@ -1,5 +1,5 @@
 <app-recipehome>
-  <div class="container">
+  <div class="ui container">
     <h2>Recipes</h2>
     <div each="{ key,data in recipeData }" class="recipeBlock" >
       <div class="{ key }">
@@ -8,7 +8,7 @@
     </div>
 
   </div>
-  
+
 
   <script>
     const recipes = firebase.database().ref('recipeData');
