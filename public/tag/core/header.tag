@@ -2,20 +2,16 @@
   <div class="ui grid">
     <div class="ui fixed inverted borderless menu">
       <a class="ui inverted grey button btn-text" href="/" if="{ !user }">
-        <i class="book icon"></i>
+        <i class="desktop icon"></i>
         ホーム
       </a>
       <a class="ui inverted grey button btn-text" href="/recipehome" if="{ user }">
-        <i class="book icon"></i>
+        <i class="desktop icon"></i>
         ホーム
       </a>
-      <a class="ui inverted orange button btn-text" href="/mypage" if="{ user }">
-        <i class="user icon"></i>
-        マイページ
-      </a>
-      <a class="ui inverted orange button btn-text" href="/recipe" if="{ user }">
+      <a class="ui inverted grey button btn-text" href="/recipe" if="{ user }">
         <i class="write icon"></i>
-        レシピ
+        つくる
       </a>
       <div class="right menu">
         <a class="ui inverted orange button btn-text" href="/auth" if="{ !user }">
@@ -23,25 +19,31 @@
           ログイン
         </a>
         <div if="{ user }">
-          { displayName } さん
-        </div>
-        
-        <div class="ui teal buttons">
-          <div class="ui button">Save</div>
-          <div class="ui floating dropdown icon button">
-            <i class="dropdown icon"></i>
-            <div class="menu">
-              <div class="item"><i class="edit icon"></i> Edit Post</div>
-              <div class="item"><i class="delete icon"></i> Remove Post</div>
-              <div class="item"><i class="hide icon"></i> Hide Post</div>
+          <div class="ui compact menu userbtn">
+            <div class="ui simple dropdown item">
+              <img class="ui avatar image" src="{ photoURL }">
+              <span class="username">{ displayName }さん</span>
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a class="item" href="/mypage">
+                  <i class="book icon"></i>
+                  マイレシピ
+                </a>
+                <a class="item">
+                  <i class="options icon" href="#"></i>
+                  設定
+                </a>
+                <div class="item" onclick="{ signout }">
+                  <a class="ui inverted red button">
+                    <i class="sign out icon" ></i>
+                    ログアウト
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- <a class="ui inverted red button btn-text" onclick="{ signout }" if="{ user }">
-          <i class="sign out icon"></i>
-          ログアウト
-        </a> -->
       </div>
     </div>
   </div>
@@ -69,8 +71,17 @@
     });
   };
 
-
-
   </script>
+
+  <style>
+    .username {
+      color: black;
+    }
+
+    .userbtn {
+      height: 32px;
+    }
+  </style>
+
 
 </app-header>
