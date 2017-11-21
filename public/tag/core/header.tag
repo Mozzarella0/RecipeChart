@@ -36,7 +36,7 @@
             <div class="menu">
               <a class="item" href="/mypage">
                 <i class="book icon"></i>
-                マイレシピ
+                マイページ
               </a>
               <a class="item">
                 <i class="options icon" href="#"></i>

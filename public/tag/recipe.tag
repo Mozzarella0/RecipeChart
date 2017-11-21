@@ -32,10 +32,6 @@
         <textarea style="height: 150px;" id="chartData" >terminal=開始;{ String.fromCharCode(13); }</textarea>
       </div>
 
-      <div class="field">
-        <i class="big plus link orange icon" onclick="{ addProcess }"></i>
-      </div>
-
       <div class="unit"></div>
 
       <div class="ui divider"></div>
@@ -47,11 +43,22 @@
     </div>
   </div>
 
+  <div class="plusMinusMenu">
+    <i class="big circular plus link orange icon" data-toggle="tooltip" title="プロセスの追加" onclick="{ addProcess }"></i>
+    <i class="big circular minus link orange icon" data-toggle="tooltip" title="プロセスの削除" onclick="{ dltProcess }"></i>
+  </div>
+
+
   <script>
     var chartForm = [];
 
     this.addProcess = () => {
       chartForm.push("test");
+      riot.mount('.unit', 'process', { chartForm : chartForm });
+    };
+
+    this.dltProcess = () => {
+      chartForm.pop();
       riot.mount('.unit', 'process', { chartForm : chartForm });
     };
 
@@ -109,6 +116,12 @@
   </script>
 
   <style>
+
+    .plusMinusMenu {
+      position: fixed;
+      top: 85%;
+      left: 90%;
+    }
 
   </style>
 </app-recipe>

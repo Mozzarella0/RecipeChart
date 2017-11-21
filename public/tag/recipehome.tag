@@ -4,18 +4,19 @@
     <div class="ui divider"></div>
     <div class="ui middle aligned center aligned grid">
       <div class="ui grid">
-        <div each="{ key,data in recipeData }" >
+        <div each="{ key,data in recipeData }" class="ui segment">
           <div class="{ key }">
-            <a class="ui orange basic button segment">
-              <h4>{ data.recipeName }</h4>
-              <div class="comment" if="{ data.recipeComment.length < 6}">
+            <a class="ui orange basic button ">
+              <h4 if="{ data.recipeName.length < 11 }">{ data.recipeName }</h4>
+              <h4 if="{ data.recipeName.length > 10 }">{ data.recipeName.substr(0, 10) } ...</h4>
+              <div class="comment" if="{ data.recipeComment.length < 11}">
                 <i>{ data.recipeComment }</i>
               </div>
-              <div class="comment" if="{ data.recipeComment.length > 6}">
-                <i>{ data.recipeComment.substr(0, 6) } ...</i>
+              <div class="comment" if="{ data.recipeComment.length > 10}">
+                <i>{ data.recipeComment.substr(0, 10) } ...</i>
               </div>
               <div class="ui divider"></div>
-              <div class="date-creator">
+              <div class="creator">
                 <i class="ui right aligned">Creator ... { data.creator }</i>
               </div>
             </a>
