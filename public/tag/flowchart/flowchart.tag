@@ -1,39 +1,27 @@
 <flowchart>
-
   <div class="ui container">
-    <div each="{ index, data in chartData}" class="outside">
-      <div class="{ data.class }">
-        <i>{ data.value }</i>
+    <div each="{ i, key in opts.chartData }" class="outside">
+      <div class="{ key.processName }">
+        <i>{ key.content }</i>
       </div>
     </div>
   </div>
 
 
   <script>
-    this.chartData = {};
-    const row = opts.text.split(';');
-
-    for (let i=0; i < row.length - 1; i++) {
-      const obj = {};
-      const gr = row[i].split('=');
-      obj.class = gr[0];
-      obj.value = gr[1];
-      this.chartData[i] = obj;
-
-    }
 
   </script>
 
   <style>
-
     .outside {
       position: relative;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-      width: 200px;
+      width: 190px;
       height: 50px;
+      margin: auto;
     }
 
     .terminal {
@@ -94,18 +82,32 @@
       z-index: 1;
     }
 
-    .inoutput {
-      width: 190px;
+    .inout {
+      width: 180px;
     	height: 50px;
-    	-webkit-transform: skew(-20deg);
-      -moz-transform: skew(-20deg);
-      -o-transform: skew(-20deg);
-      background: #333333;
       margin: auto;
       margin-top: 20px;
+      text-align: center;
     }
 
-    .loop-start {
+    .inout i {
+      color: #fff;
+      z-index: 1;
+    }
+
+    .inout::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: #333333;
+      z-index: -1;
+      transform: skew(-20deg);
+    }
+
+    .loop-s {
       width: 190px;
       height: 25px;
       background-color: #333333;
@@ -113,7 +115,7 @@
       margin-top: 45px;
     }
 
-    .loop-start:after{
+    .loop-s:after{
       content: '';
       position: absolute;
       top: -50px;
@@ -125,7 +127,7 @@
     	border-right: 25px solid transparent;
     }
 
-    .loop-start i {
+    .loop-s i {
       position: absolute;
       top: -100px;
       left: 0;
@@ -137,7 +139,7 @@
       z-index: 1;
     }
 
-    .loop-end {
+    .loop-e {
       width: 190px;
       height: 25px;
       background-color: #333333;
@@ -145,7 +147,7 @@
       margin-top: 20px;
     }
 
-    .loop-end:after{
+    .loop-e:after{
       content: '';
       position: absolute;
       top: 25px;
@@ -157,7 +159,7 @@
     	border-right: 25px solid transparent;
     }
 
-    .loop-end i {
+    .loop-e i {
       position: absolute;
       top: -100px;
       left: 0;

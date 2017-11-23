@@ -13,11 +13,11 @@
           RecipeChart
         </h4>
       </div>
-      <a class="header item" data-toggle="tooltip" title="View Recipe" href="/recipehome" if="{ user }">
+      <a class="header item" href="/recipehome" if="{ user }">
         <i class="large book icon" if="{ !opts.recipehome }"></i>
         <i class="large book orange icon" if="{ opts.recipehome }"></i>
       </a>
-      <a class="header item" data-toggle="tooltip" title="Write Recipe" href="/recipe" if="{ user }">
+      <a class="header item" href="/recipe" if="{ user }">
         <i class="large write icon" if="{ !opts.recipe }"></i>
         <i class="large write orange icon" if="{ opts.recipe }"></i>
       </a>
