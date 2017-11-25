@@ -1,4 +1,4 @@
-<app-recipe>
+<app-writerecipe>
   <div class="ui container">
     <div class="ui equal width grid">
       <div class="sixteen wide column">
@@ -51,7 +51,7 @@
 
   <script>
     var processName = ["terminal", "process", "decision", "inout", "loop-s", "loop-e"];
-    var chartData = {0: { processName : "terminal", content : "開始", detail : ""} };
+    var chartData = {0: { content : "開始", detail : "", processName : "terminal"} };
     var num = 0;
 
     const objRefresh = () => { //処理内容の更新関数
@@ -122,4 +122,4 @@
     }
 
   </style>
-</app-recipe>
+</app-writerecipe>

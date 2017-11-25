@@ -9,7 +9,7 @@
 
 
   <script>
-
+    console.log(opts.chartData);
   </script>
 
   <style>

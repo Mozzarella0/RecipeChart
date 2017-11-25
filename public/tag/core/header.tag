@@ -13,13 +13,13 @@
           RecipeChart
         </h4>
       </div>
-      <a class="header item" href="/recipehome" if="{ user }">
-        <i class="large book icon" if="{ !opts.recipehome }"></i>
-        <i class="large book orange icon" if="{ opts.recipehome }"></i>
+      <a class="header item" href="/viewrecipe" if="{ user }">
+        <i class="large book icon" if="{ !opts.viewrecipe }"></i>
+        <i class="large book orange icon" if="{ opts.viewrecipe }"></i>
       </a>
-      <a class="header item" href="/recipe" if="{ user }">
-        <i class="large write icon" if="{ !opts.recipe }"></i>
-        <i class="large write orange icon" if="{ opts.recipe }"></i>
+      <a class="header item" href="/writerecipe" if="{ user }">
+        <i class="large write icon" if="{ !opts.writerecipe }"></i>
+        <i class="large write orange icon" if="{ opts.writerecipe }"></i>
       </a>
 
       <div class="right menu item">

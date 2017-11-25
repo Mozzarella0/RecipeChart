@@ -64,10 +64,10 @@
         var user = result.user;
         console.log(user);
         console.log('Your Name:' + user.displayName);
-        route('/recipehome');
+        route('/viewrecipe');
       }).catch(function (error) {
         // エラー処理 errorはオブジェクト
-        route('/recipehome');
+        route('/viewrecipe');
         console.log(error);
       });
     };
