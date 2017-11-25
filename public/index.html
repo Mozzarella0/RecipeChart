@@ -5,39 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>RecipeChart</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-    crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
   <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.3/semantic.min.css">
 </head>
 
 <body>
+
   <div class="ui active dimmer loadcon">
     <div class="ui large text loader">Loading</div>
   </div>
   <app class="app" style="display: none;"></app>
-  <!-- ここに作ったタグ全部読み込む -->
-  <script type="riot/tag" src="tag/app.tag"></script>
-  <script type="riot/tag" src="tag/home.tag"></script>
-  <script type="riot/tag" src="tag/auth.tag"></script>
-  <script type="riot/tag" src="tag/mypage.tag"></script>
-  <script type="riot/tag" src="tag/recipe.tag"></script>
-  <script type="riot/tag" src="tag/recipehome.tag"></script>
-  <script type="riot/tag" src="tag/core/header.tag"></script>
-  <script type="riot/tag" src="tag/core/footer.tag"></script>
-  <script type="riot/tag" src="tag/flowchart/flowchart.tag"></script>
-  <!-- riot! -->
-  <script src="https://cdn.jsdelivr.net/npm/riot@3.7/riot+compiler.min.js"></script>
-  <script src="https://rawgit.com/riot/route/master/dist/route+tag.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase-database.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.6.4/riot+compiler.min.js"></script>
-  <script src="./main.js"></script>
-  <script src="./config.js"></script>
 
+  <script>
+    window.onload = function () {
+      $(function () {
+        $(".loadcon").fadeOut();
+        $(".app").fadeIn();
+      });
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+  <script src="./javascripts/bundle.js"></script>
 
 </body>
+
 </html>
