@@ -7,6 +7,15 @@
   <app-footer></app-footer>
 
   <script>
+    import firebase from '../firebase-config';
+    import route from 'riot-route';
+    import './core/header.tag';
+    import './auth.tag';
+    import './home.tag';
+    import './mypage.tag';
+    import './recipe.tag';
+    import './recipehome.tag';
+
     var userData = {};
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -37,9 +46,11 @@
     });
     route('/recipehome', () => {
       riot.mount('#content', 'app-recipehome');
+      riot.mount('app-header', 'app-header', {recipehome : 1});
     });
     route('/recipe', () => {
       riot.mount('#content', 'app-recipe', {userData : userData});
+      riot.mount('app-header', 'app-header', {recipe : 1});
     });
 
   </script>

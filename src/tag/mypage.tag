@@ -1,5 +1,5 @@
 <app-mypage>
-  <div class="container">
+  <div class="ui container">
     ログイン、成功！ｗ
   </div>
 

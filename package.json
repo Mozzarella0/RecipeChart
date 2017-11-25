@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "watch": "webpack --watch --progress --colors",
+    "build": "webpack --progress --colors"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015-riot": "^1.1.0",
+    "riot": "^3.7.4",
+    "riot-route": "^3.1.2",
+    "riotjs-loader": "^4.0.0",
+    "webpack": "^3.8.1"
+  },
+  "name": "recipe-chart",
+  "version": "1.0.0",
+  "main": "public/index.html",
+  "repository": "https://github.com/Mozzarella0/RecipeChart.git",
+  "author": "Mozzarella0",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^4.6.2"
+  }
+}

@@ -22,7 +22,7 @@
 
   <style>
     .home {
-      background-image: url("./tag/img/title.jpg");
+      background-image: url("./img/title.jpg");
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
