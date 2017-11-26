@@ -2,14 +2,28 @@
   <div class="ui container">
     <div each="{ i, key in opts.chartData }" class="outside">
       <div class="{ key.processName }">
-        <i>{ key.content }</i>
+        <i onclick="{ showModal.bind(key) }" style="cursor: pointer;">{ key.content }</i>
+      </div>
+      <div class="{ 'ui basic modal ' + i }">
+        <div class="header">
+          <div class="ui center aligned grid">
+            { key.content }
+          </div>
+        </div>
+        <div class="content">
+          <div class="ui center aligned grid" style="white-space:pre-wrap;">
+            { key.detail }
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
 
   <script>
-    console.log(opts.chartData);
+    this.showModal = (key) => {
+      $('.ui.basic.modal.' + key.item.i).modal('show');
+    }
   </script>
 
   <style>
@@ -41,6 +55,8 @@
       color: white;
       background-color: #333333;
       text-align: center;
+      position: relative;
+      left: 5px;
       margin: auto;
       margin-top: 20px;
     }
@@ -88,6 +104,8 @@
       margin: auto;
       margin-top: 20px;
       text-align: center;
+      position: relative;
+      left: 10px;
     }
 
     .inout i {
@@ -113,6 +131,8 @@
       background-color: #333333;
       margin: auto;
       margin-top: 45px;
+      position: relative;
+      left: 5px;
     }
 
     .loop-s:after{
@@ -145,6 +165,8 @@
       background-color: #333333;
       margin: auto;
       margin-top: 20px;
+      position: relative;
+      left: 5px;
     }
 
     .loop-e:after{

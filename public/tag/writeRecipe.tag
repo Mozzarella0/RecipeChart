@@ -52,7 +52,7 @@
   <script>
     var processName = ["terminal", "process", "decision", "inout", "loop-s", "loop-e"];
     var chartData = {0: { content : "開始", detail : "", processName : "terminal"} };
-    var num = 0;
+    var num = 1;
 
     const objRefresh = () => { //処理内容の更新関数
       for(var i=0; num > i; i++){
@@ -73,19 +73,28 @@
 
     const textRef = firebase.database().ref('/recipeData');
 
+    this.on('mount', () => {
+      riot.mount('.unit', 'process', { chartData : chartData });
+      riot.mount('.flowChart', 'flowchart', { chartData : chartData });
+    });
+
     this.addProcess = () => { //処理の追加
       objRefresh();
       var obj = {};
       obj.processName = obj.content = obj.detail = "";
-      chartData[++num] = obj;
+      chartData[num++] = obj;
+      console.log(chartData);
       riot.mount('.unit', 'process', { chartData : chartData });
       riot.mount('.flowChart', 'flowchart', { chartData : chartData });
     };
 
 
     this.dltProcess = () => { //処理の削除
-      chartData.pop();
+      objRefresh();
+      delete chartData[--num];
+      console.log(chartData);
       riot.mount('.unit', 'process', { chartData : chartData });
+      riot.mount('.flowChart', 'flowchart', { chartData : chartData });
     };
 
     this.refresh = () => { //見た目の更新
@@ -100,7 +109,6 @@
       const day = date.getDate();
       const hour = date.getHours();
       const minute = date.getMinutes();
-
       textRef.push({
         creator : opts.userData.displayName,
         recipeName : document.getElementById('recipeName').value,
@@ -108,6 +116,7 @@
         recipeContent : chartData,
         date : year + '/' + month + '/' + day + ' ' + hour + ':' + minute
       });
+      route('viewrecipe');
 
     };
 

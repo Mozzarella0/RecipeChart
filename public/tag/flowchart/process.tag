@@ -27,12 +27,8 @@
 
             <div class="field">
               <label>詳しい手順(任意)</label>
-              <div class="ui left icon input">
-                <i class="comments outline icon"></i>
-                <input placeholder="type here" id="{ i + '_content_detail' }" value="{ key.detail }"></input>
-              </div>
+              <textarea placeholder="type here" id="{ i + '_content_detail' }" rows="2">{ key.detail }</textarea>
             </div>
-
 
           </div>
         </div>
