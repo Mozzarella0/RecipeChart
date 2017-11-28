@@ -4,7 +4,7 @@
       <div class="{ key.processName }">
         <i onclick="{ showModal.bind(key) }" style="cursor: pointer;">{ key.content }</i>
       </div>
-      <div class="{ 'ui basic modal ' + i }">
+      <div class="ui basic modal" id="{ i }">
         <div class="header">
           <div class="ui center aligned grid">
             { key.content }
@@ -22,7 +22,7 @@
 
   <script>
     this.showModal = (key) => {
-      $('.ui.basic.modal.' + key.item.i).modal('show');
+      $('.ui.basic.modal#' + key.item.i).modal('show');
     }
   </script>
 

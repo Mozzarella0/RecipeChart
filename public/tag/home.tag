@@ -1,7 +1,7 @@
 <app-home>
   <div class="fixing">
     <div class="home">
-      <div class="container">
+      <div class="ui container">
         <div class="title">
           <p>RecipeChart</p>
         </div>

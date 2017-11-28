@@ -17,7 +17,7 @@
               </div>
               <div class="ui divider"></div>
               <div class="creator">
-                <i class="ui right aligned">Creator ... { data.creator }</i>
+                <i class="ui right aligned">Creator ... { accountData[data.creatorId].displayName }</i>
               </div>
             </a>
           </div>
@@ -40,11 +40,22 @@
       }
     });
 
+    const accounts = firebase.database().ref('account');
+    this.accountData = {};
+    accounts.on('value', (account) => {
+      if(account.val()) {
+        this.accountData = account.val();
+        this.update();
+        console.log(this.accountData);
+      }else{
+      }
+    });
+
     this.onlyrecipe = (data, click) => { //何故か上と逆になる
       console.log(click.item.key);
       console.log(data);
       route('/viewrecipe/#' + click.item.key);
-      riot.mount('#content', 'app-only', { key : click.item.key, data : data });
+      riot.mount('#content', 'app-only', { key : click.item.key, data : data, accountData : this.accountData });
     };
 
   </script>

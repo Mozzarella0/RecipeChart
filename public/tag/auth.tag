@@ -17,7 +17,7 @@
             <input type="password" name="password" placeholder="Password"></input>
           </div>
         </div>
-        <button class="ui fluid large orange submit button" onclick="signin()">
+        <button class="ui fluid large orange submit button" onclick="signin">
           ログイン
         </button>
       </div>
@@ -57,13 +57,15 @@
     }
 
     //google
-    var provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
     this.googleAuth = function(){
       console.log("ログイン");
       firebase.auth().signInWithPopup(provider).then(function (result) {
-        var user = result.user;
-        console.log(user);
-        console.log('Your Name:' + user.displayName);
+        const user = result.user;
+        const textRef = firebase.database().ref(`/account/${user.uid}`);
+        textRef.update({
+          displayName : user.displayName
+        });
         route('/viewrecipe');
       }).catch(function (error) {
         // エラー処理 errorはオブジェクト
@@ -72,7 +74,7 @@
       });
     };
 
-
+// userのuidのキーの中にdisplayName : displayNameを入れる
   </script>
 
   <style>

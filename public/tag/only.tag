@@ -3,15 +3,14 @@
     <h2 class="ui horizontal divider header">{ opts.data.recipeName }</h2>
     <div class="ui equal width center aligned grid">
       <div class="sixteen wide column">
-        <h4 if="{ opts.data.recipeComment != '' }">{ opts.data.recipeComment }</h4>
-        <h4 if="{ opts.data.recipeComment == '' }">No Comment ...<h4>
+        <h4>{ opts.data.recipeComment }</h4>
       </div>
         <div class="flowChart"></div>
         <p></p>
     </div>
     <div class="ui sixteen wide column onlycreator">
       <div class="ui divider"></div>
-      Create By <a>{ opts.data.creator }</a>
+      Create By <a>{ opts.accountData[opts.data.creatorId].displayName }</a>
     </div>
   </div>
 

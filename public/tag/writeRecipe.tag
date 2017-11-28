@@ -109,10 +109,14 @@
       const day = date.getDate();
       const hour = date.getHours();
       const minute = date.getMinutes();
+      var name = document.getElementById('recipeName').value;
+      var comment = document.getElementById('recipeComment').value;
+      if (name == "") {name = 'NewRecipe';}
+      if (comment == "") {comment = 'No Comment...';}
       textRef.push({
-        creator : opts.userData.displayName,
-        recipeName : document.getElementById('recipeName').value,
-        recipeComment : document.getElementById('recipeComment').value,
+        creatorId : opts.userData.uid,
+        recipeName : name,
+        recipeComment : comment,
         recipeContent : chartData,
         date : year + '/' + month + '/' + day + ' ' + hour + ':' + minute
       });
