@@ -13,13 +13,16 @@
           RecipeChart
         </h4>
       </div>
-      <a class="header item" href="/viewrecipe" if="{ user }">
+      <a class="header item" href="/viewrecipe">
         <i class="large book icon" if="{ !opts.viewrecipe }"></i>
         <i class="large book orange icon" if="{ opts.viewrecipe }"></i>
       </a>
       <a class="header item" href="/writerecipe" if="{ user }">
         <i class="large write icon" if="{ !opts.writerecipe }"></i>
         <i class="large write orange icon" if="{ opts.writerecipe }"></i>
+      </a>
+      <a class="header item" if="{ !user }" onclick="{ showLoginModal }">
+        <i class="large write icon"></i>
       </a>
 
       <div class="right menu item">
@@ -55,28 +58,42 @@
       </div>
     </div>
 
+    <div class="ui modal" id="login">
+      <div class="header">ログインが必要な操作です</div>
+      <div class="content">
+        <app-auth></app-auth>
+      </div>
+      <div class="footer">
+
+      </div>
+    </div>
+
   <script>
 
     firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      this.displayName = user.displayName;
-      this.photoURL = user.photoURL;
-      this.user = true;
-      this.update()
-    } else {
+      if (user) {
+        this.displayName = user.displayName;
+        this.photoURL = user.photoURL;
+        this.user = true;
+        this.update()
+      } else {
 
-    }
-  });
-
-  this.signout = () => {
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-      this.isUser = true;
-      route('/');
-    }).catch(function(error) {
-      // An error happened.
+      }
     });
-  };
+
+    this.signout = () => {
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        this.isUser = true;
+        route('/');
+      }).catch(function(error) {
+        // An error happened.
+      });
+    };
+
+    this.showLoginModal = () => {
+      $('.ui.modal#login').modal('show');
+    }
 
   </script>
 

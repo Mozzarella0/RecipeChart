@@ -44,6 +44,10 @@
       position: relative;
       top: 100px;
     }
+
+    .viewrecipe {
+      display: none;
+    }
   </style>
 
 </app>

@@ -26,13 +26,17 @@
     <!-- ログインフォーム end -->
 
     <div class="ui message">
-      <p>アカウントを持っていませんか？<a data-toggle="modal" data-target="#signUpModal">Sign Up</a></p>
+      <p>アカウントを持っていませんか？<a>Sign Up</a></p>
     </div>
 
 
     <div class="ui divider"></div>
 
     <button class="ui google plus button" onclick="{ googleAuth }">
+      <i class="google icon"></i>
+      Login with Google
+    </button>
+    <button class="ui google plus loading button">
       <i class="google icon"></i>
       Login with Google
     </button>
@@ -43,6 +47,11 @@
   </div>
 
   <script>
+    this.on('mount', () => {
+      $('.ui.google.plus.loading.button').hide();
+    });
+
+
     //email login
     signin() {
       firebase.auth().signInWithEmailAndPassword(this.refs.email.value, this.refs.password.value).then(
@@ -58,7 +67,7 @@
 
     //google
     const provider = new firebase.auth.GoogleAuthProvider();
-    this.googleAuth = function(){
+    this.googleAuth = () => {
       console.log("ログイン");
       firebase.auth().signInWithPopup(provider).then(function (result) {
         const user = result.user;
@@ -67,6 +76,7 @@
           displayName : user.displayName
         });
         route('/viewrecipe');
+        $('.ui.modal#login').modal('hide');
       }).catch(function (error) {
         // エラー処理 errorはオブジェクト
         route('/viewrecipe');
@@ -74,7 +84,6 @@
       });
     };
 
-// userのuidのキーの中にdisplayName : displayNameを入れる
   </script>
 
   <style>

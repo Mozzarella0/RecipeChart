@@ -1,5 +1,5 @@
 <app-viewrecipe>
-  <div class="ui container">
+  <div class="ui container viewrecipe">
     <h2>Recipes</h2>
     <div class="ui divider"></div>
     <div class="ui middle aligned center aligned grid">
@@ -25,7 +25,11 @@
       </div>
     </div>
   </div>
-  <div class="flowChart"></div>
+  <div class="viewLoadCon">
+    <div class="ui active inverted dimmer">
+      <div class="ui large text loader">Loading</div>
+    </div>
+  </div>
 
 
   <script>
@@ -33,6 +37,8 @@
     this.recipeData = {};
     recipes.on('value', (recipe) => {
       if(recipe.val()) {
+        $(".loadcon").fadeOut();
+        $(".viewrecipe").fadeIn();
         this.recipeData = recipe.val();
         this.update();
         console.log(this.recipeData);
@@ -60,5 +66,10 @@
 
   </script>
   <style>
+    .viewLoadCon{
+      position: fixed;
+      margin-left: 50%;
+      margin-top: 40%;
+    }
   </style>
 </app-viewrecipe>
