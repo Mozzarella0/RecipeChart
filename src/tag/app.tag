@@ -33,6 +33,7 @@
     });
     route('/mypage', () => {
       riot.mount('#content', 'app-mypage');
+      riot.mount('app-header', 'app-header');
     });
     route('/viewrecipe', () => {
       riot.mount('#content', 'app-viewrecipe');

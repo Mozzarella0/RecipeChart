@@ -1,29 +1,30 @@
 <app-viewrecipe>
-  <div class="ui container viewrecipe">
-    <h2>Recipes</h2>
-    <div class="ui divider"></div>
-    <div class="ui middle aligned center aligned grid">
-      <div class="ui grid">
-        <div each="{ key,data in recipeData }" class="ui segment">
-          <div class="{ data }">
-            <a class="ui orange basic button " onclick="{ onlyrecipe.bind(key, data) }">
-              <h4 if="{ +key.recipeName.length < 11 }">{ key.recipeName }</h4>
-              <h4 if="{ +key.recipeName.length > 10 }">{ key.recipeName.substr(0, 10) } ...</h4>
-              <div class="comment" if="{ +key.recipeComment.length < 11}">
-                <i>{ key.recipeComment }</i>
-              </div>
-              <div class="comment" if="{ +key.recipeComment.length > 10}">
-                <i>{ key.recipeComment.substr(0, 10) } ...</i>
-              </div>
-              <div class="ui divider"></div>
-              <div class="creator">
-                <i class="ui right aligned">Creator ... { accountData[key.creatorId].displayName }</i>
-              </div>
-            </a>
+  <div class="ui container">
+    <h2 class="ui  horizontal divider header">View Recipe</h2>
+    <div class="ui grid">
+      <div class="sixteen wide column">
+        <div each="{ key,data in recipeData }" class="ui clearing segment { data }" >
+          <div onclick="{ onlyrecipe.bind(key, data) }" style="cursor: pointer;">
+            <h3>{ key.recipeName }</h3>
+            <div class="comment" >
+              <i if="{ +key.recipeComment.length < 100}">{ key.recipeComment } </i>
+              <i if="{ +key.recipeComment.length > 100}">{ key.recipeComment.substr(0, 100) } ... </i>
+              <p></p><small>By { accountData[key.creatorId].displayName }</small>
+            </div>
+
+            <div class="ui divider"></div>
+            <div class="ui inverted right floated circular orange icon button" data-tooltip="Good!">
+              <i class="thumbs outline up icon"></i>
+            </div>
+            <div class="ui inverted right floated circular orange icon button" data-tooltip="Put in my folder">
+              <i class="folder outline icon"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+
   </div>
 
   <div class="viewLoadCon">

@@ -43,13 +43,13 @@
   </div>
 
   <div class="plusMinusMenu">
-    <div data-toggle="tooltip" title="更新" onclick="{ refresh }">
+    <div data-tooltip="更新" data-position="left center" onclick="{ refresh }">
       <i class="big circular refresh link orange icon" ></i>
     </div>
-    <div data-toggle="tooltip" title="プロセスの追加" onclick="{ addProcess }">
+    <div data-tooltip="プロセスの追加" data-position="left center" onclick="{ addProcess }">
       <i class="big circular plus link orange icon"></i>
     </div>
-    <div data-toggle="tooltip" title="プロセスの削除" onclick="{ dltProcess }">
+    <div data-tooltip="プロセスの削除" data-position="left center" onclick="{ dltProcess }">
       <i class="big circular minus link orange icon"></i>
     </div>
   </div>
