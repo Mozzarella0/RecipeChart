@@ -115,7 +115,7 @@
       if (name == "") {name = 'NewRecipe';}
       if (comment == "") {comment = 'No Comment...';}
       textRef.push({
-        creatorId : opts.userData.uid,
+        creatorId : window.userData.uid,
         recipeName : name,
         recipeComment : comment,
         recipeContent : chartData,

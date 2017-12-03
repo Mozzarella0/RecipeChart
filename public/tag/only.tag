@@ -16,6 +16,7 @@
       Create By <a>{ opts.accountData[opts.data.creatorId].displayName }</a>
     </div>
   </div>
+
   <script>
     const arr = opts.data.recipeContent;
     var chartData = {};
@@ -23,6 +24,7 @@
       chartData[key] = arr[key];
     }
     this.on('mount', () => {
+      console.log(opts.data)
       riot.mount('.flowChart', 'flowchart', { chartData : chartData });
     });
     this.back = () => {

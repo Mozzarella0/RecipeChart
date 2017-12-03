@@ -36,10 +36,6 @@
       <i class="google icon"></i>
       Login with Google
     </button>
-    <button class="ui google plus loading button">
-      <i class="google icon"></i>
-      Login with Google
-    </button>
       <button class="ui twitter button">
       <i class="twitter icon"></i>
       Login with Twitter
@@ -47,11 +43,6 @@
   </div>
 
   <script>
-    this.on('mount', () => {
-      $('.ui.google.plus.loading.button').hide();
-    });
-
-
     //email login
     signin() {
       firebase.auth().signInWithEmailAndPassword(this.refs.email.value, this.refs.password.value).then(

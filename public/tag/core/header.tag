@@ -1,13 +1,13 @@
 <app-header>
   <div class="ui grid">
     <div class="ui fixed inverted borderless menu">
-      <a class="header item" href="/" if="{ !user }">
+      <a class="header item" href="/" if="{ !window.userData }">
         <h4>
           <i class="large industry icon"></i>
           RecipeChart
         </h4>
       </a>
-      <div class="header item" if="{ user }">
+      <div class="header item" if="{ window.userData }">
         <h4>
           <i class="large industry orange icon"></i>
           RecipeChart
@@ -17,24 +17,24 @@
         <i class="large book icon" if="{ !opts.viewrecipe }"></i>
         <i class="large book orange icon" if="{ opts.viewrecipe }"></i>
       </a>
-      <a class="header item" href="/writerecipe" if="{ user }">
+      <a class="header item" href="/writerecipe" if="{ window.userData }">
         <i class="large write icon" if="{ !opts.writerecipe }"></i>
         <i class="large write orange icon" if="{ opts.writerecipe }"></i>
       </a>
-      <a class="header item" if="{ !user }" onclick="{ showLoginModal }">
+      <a class="header item" if="{ !window.userData }" onclick="{ showLoginModal }">
         <i class="large write icon"></i>
       </a>
 
       <div class="right menu item">
-        <a class="ui inverted orange button btn-text" href="/auth" if="{ !user }">
+        <a class="ui inverted orange button btn-text" href="/auth" if="{ !window.userData }">
           <i class="user icon"></i>
           ログイン
         </a>
-        <div if="{ user }"> <!-- ユーザーメニュードロップダウン -->
+        <div if="{ window.userData }"> <!-- ユーザーメニュードロップダウン -->
 
           <div class="ui simple dropdown">
-            <img class="ui avatar image" src="{ photoURL }"></img>
-            <span class="username">{ displayName } さん</span>
+            <img class="ui avatar image" src="{ window.userData.photoURL }"></img>
+            <span class="username">{ window.userData.displayName } さん</span>
             <i class="dropdown icon"></i>
             <div class="menu">
               <a class="item" href="/mypage">

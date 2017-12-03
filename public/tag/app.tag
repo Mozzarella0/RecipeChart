@@ -7,19 +7,16 @@
   <app-footer></app-footer>
 
   <script>
-    var userData = {};
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        userData = user;
+        window.userData = user;
         this.update();
-      } else {
-        userData = null;
       }
     });
 
     //ルーティング
     route('/', () => {
-      riot.mount('#content', 'app-home', {userData : userData});
+      riot.mount('#content', 'app-home');
       riot.mount('app-header', 'app-header');
     });
     route('/auth', () => {
@@ -33,7 +30,11 @@
       riot.mount('app-header', 'app-header', {viewrecipe : 1});
     });
     route('/writerecipe', () => {
-      riot.mount('#content', 'app-writerecipe', {userData : userData});
+      if (window.userData != null) {
+        riot.mount('#content', 'app-writerecipe');
+      } else if(window.userData == null) {
+        riot.mount('#content', 'app-auth');
+      }
       riot.mount('app-header', 'app-header', {writerecipe : 1});
     });
 

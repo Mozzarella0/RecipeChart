@@ -22,8 +22,9 @@
 
   <script>
     this.showModal = (key) => {
+      console.log(key.item.i);
       $('.ui.basic.modal#' + key.item.i).modal('show');
-    }
+    };
   </script>
 
   <style>
