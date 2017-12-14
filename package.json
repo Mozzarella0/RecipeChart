@@ -19,6 +19,7 @@
   "author": "Mozzarella0",
   "license": "MIT",
   "dependencies": {
-    "firebase": "^4.6.2"
+    "firebase": "^4.6.2",
+    "semantic-ui-riot": "^0.1.1"
   }
 }

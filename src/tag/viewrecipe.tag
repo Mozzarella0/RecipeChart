@@ -3,21 +3,20 @@
     <h2 class="ui  horizontal divider header">View Recipe</h2>
     <div class="ui grid">
       <div class="sixteen wide column">
-        <div each="{ key,data in recipeData }" class="ui clearing segment { data }" >
-          <div onclick="{ onlyrecipe.bind(key, data) }" style="cursor: pointer;">
-            <h3>{ key.recipeName }</h3>
-            <div class="comment" >
-              <i if="{ +key.recipeComment.length < 100}">{ key.recipeComment } </i>
-              <i if="{ +key.recipeComment.length > 100}">{ key.recipeComment.substr(0, 100) } ... </i>
-              <p></p><small>By { accountData[key.creatorId].displayName }</small>
-            </div>
+        <div each="{ key,data in recipeData }" class="ui clearing segment" >
+          <div class="{ data }">
+            <div onclick="{ onlyrecipe.bind(key, data) }" style="cursor: pointer;">
+              <h3>{ key.recipeName }</h3>
+              <div class="comment" >
+                <i if="{ +key.recipeComment.length < 100}">{ key.recipeComment } </i>
+                <i if="{ +key.recipeComment.length > 100}">{ key.recipeComment.substr(0, 100) } ... </i>
+                <p></p><small>By { accountData[key.creatorId].displayName }</small>
+              </div>
+              <div class="ui divider"></div>
+              <div class="ui inverted right floated circular orange icon button" data-tooltip="Collect">
+                <i class="book orange icon"></i>
+              </div>
 
-            <div class="ui divider"></div>
-            <div class="ui inverted right floated circular orange icon button" data-tooltip="Good!">
-              <i class="thumbs outline up icon"></i>
-            </div>
-            <div class="ui inverted right floated circular orange icon button" data-tooltip="Put in my folder">
-              <i class="folder outline icon"></i>
             </div>
           </div>
         </div>
@@ -26,6 +25,7 @@
 
 
   </div>
+
 
   <div class="viewLoadCon">
     <div class="ui active inverted dimmer">
@@ -42,11 +42,11 @@
     this.recipeData = {};
     recipes.on('value', (recipe) => {
       if(recipe.val()) {
-        $(".viewLoadCon").fadeOut();
+        $(".viewLoadCon").hide();
         $(".viewrecipe").fadeIn();
         this.recipeData = recipe.val();
         this.update();
-        console.log(this.recipeData);
+        // console.log(this.recipeData);
       }else{
       }
     });
@@ -57,7 +57,7 @@
       if(account.val()) {
         this.accountData = account.val();
         this.update();
-        console.log(this.accountData);
+        // console.log(this.accountData);
       }else{
       }
     });
@@ -72,7 +72,22 @@
       route(`/viewonly/${data}`);
     };
 
+    if (opts.keyword) {
+      var re = new RegExp('.*' + opts.keyword + '.*');
+      var obj = this.recipeData;
+      var newobj = {};
+
+      Object.keys(obj).forEach(function (key) {
+        if (obj[key].recipeName.match(re) || obj[key].recipeComment.match(re)){
+          newobj[key] = obj[key];
+        }
+      });
+      this.recipeData = newobj
+      this.update();
+    }
+
   </script>
+
   <style>
     .viewLoadCon{
       position: fixed;

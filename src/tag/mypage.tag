@@ -1,7 +1,13 @@
 <app-mypage>
   <div class="ui container">
-    <img class="ui circular small image" src="{ window.userData.photoURL }"></img>
-    <span class="username">{ window.userData.displayName } さん</span>
+    <h3 class="ui horizontal divider header">
+      <i class="write icon"></i>
+      Your Recipes
+    </h3>
+    <h3 class="ui horizontal divider header">
+      <i class="book icon"></i>
+      Your Book
+    </h3>
   </div>
 
   <script>

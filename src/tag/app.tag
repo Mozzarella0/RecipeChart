@@ -23,31 +23,32 @@
       }
     });
 
+    const mounthing = (content, param, headparam) => {
+      $('#content').hide();
+      riot.mount('#content', content, param);
+      riot.mount('app-header', 'app-header', headparam);
+      $('#content').fadeIn();
+    };
+
     //ルーティング
     route('/', () => {
-      riot.mount('#content', 'app-home');
-      riot.mount('app-header', 'app-header');
+      mounthing('app-home');
     });
     route('/auth', () => {
-      riot.mount('#content', 'app-auth');
+      mounthing('app-auth');
     });
     route('/mypage', () => {
-      riot.mount('#content', 'app-mypage');
-      riot.mount('app-header', 'app-header');
+      mounthing('app-mypage');
     });
     route('/viewrecipe', () => {
-      riot.mount('#content', 'app-viewrecipe');
-      riot.mount('app-header', 'app-header', {viewrecipe : 1});
+      mounthing('app-viewrecipe', { keyword : '' }, {viewrecipe : 1});
     });
     route('/writerecipe', () => {
-      riot.mount('#content', 'app-writerecipe');
-      riot.mount('app-header', 'app-header', {writerecipe : 1});
+      mounthing('app-writerecipe', 0, {writerecipe : 1});
     });
     route('/viewonly/*', () => {
-      riot.mount('#content', 'app-only');
-      riot.mount('app-header', 'app-header', {viewrecipe : 1});
+      mounthing('app-only', 0, {viewrecipe : 1});
     });
-
 
   </script>
 
