@@ -1,40 +1,44 @@
 <app-writerecipe>
   <div class="ui container">
-    <div class="ui equal width grid">
-      <div class="sixteen wide column">
+    <div class="ui clearing segment">
+      <div class="ui equal width grid">
+        <div class="sixteen wide column">
 
-        <div class="ui form">
-          <h2 class="ui  horizontal divider header">Write Recipe</h2>
-          <div class="field">
-            <label>レシピの名前</label>
-            <div class="ui left icon input">
-              <i class="book icon"></i>
-              <input placeholder="type here" ref="recipeName" value="NewRecipe"></input>
+          <div class="ui form clearing segment">
+            <h2 class="ui  horizontal divider header">Write Recipe</h2>
+            <div class="field">
+              <label>レシピの名前</label>
+              <div class="ui left icon input">
+                <i class="book icon"></i>
+                <input placeholder="type here" ref="recipeName" value="NewRecipe"></input>
+              </div>
+            </div>
+            <div class="field">
+              <label>コメント</label>
+              <div class="ui left icon input">
+                <i class="comment outline icon"></i>
+                <input placeholder="type here" ref="recipeComment"></input>
+              </div>
             </div>
           </div>
-          <div class="field">
-            <label>コメント</label>
-            <div class="ui left icon input">
-              <i class="comment outline icon"></i>
-              <input placeholder="type here" ref="recipeComment"></input>
+
+        </div>
+        <button class="ui fluid orange button btn-text" onClick="{ add }">Done</button>
+        <p></p>
+        <div class="equal width row">
+          <div class="column">
+            <div class="ui form">
+              <div class="ui clearing segment">
+                <h3 class="ui horizontal divider header">Process</h3>
+                <process></process>
+              </div>
             </div>
           </div>
-        </div>
-
-      </div>
-      <button class="ui fluid orange button btn-text" onClick="{ add }">Done</button>
-      <p></p>
-      <div class="equal width row">
-        <div class="column">
-          <div class="ui form">
-            <h3 class="ui horizontal divider header">Process</h3>
-            <process></process>
-          </div>
-        </div>
-        <div class="column">
-          <div class="ui form">
-            <h3 class="ui horizontal divider header">View</h3>
-            <flowchart name="write"></flowchart>
+          <div class="column">
+            <div class="ui form">
+              <h3 class="ui horizontal divider header">View</h3>
+              <flowchart name="write"></flowchart>
+            </div>
           </div>
         </div>
       </div>
@@ -42,7 +46,7 @@
 
   </div>
 
-  <div class="plusMinusMenu">
+  <div class="plusMinusMenu ui clearing segment">
     <div data-tooltip="更新" data-position="left center" onclick="{ refresh }">
       <i class="big circular refresh link orange icon" ></i>
     </div>

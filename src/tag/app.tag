@@ -15,6 +15,7 @@
     import './only.tag';
     import './flowchart/flowchart.tag';
     import './flowchart/process.tag'
+    import './recipeblock/recipeblock.tag'
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
