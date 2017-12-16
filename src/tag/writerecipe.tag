@@ -46,7 +46,7 @@
 
   </div>
 
-  <div class="plusMinusMenu ui clearing segment">
+  <div class="plusMinusMenu">
     <div data-tooltip="更新" data-position="left center" onclick="{ refresh }">
       <i class="big circular refresh link orange icon" ></i>
     </div>

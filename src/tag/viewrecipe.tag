@@ -41,6 +41,15 @@
       }
     });
 
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.uid = user.uid;
+        this.update()
+      } else {
+
+      }
+    });
+
     if (opts.keyword) {
       var re = new RegExp('.*' + opts.keyword + '.*');
       var obj = this.recipeData;

@@ -7,11 +7,12 @@
       </h3>
       <recipeblock recipedata="{ recipeData }" accountdata="{ accountData }"></recipeblock>
     </div>
-    <div class="ui clearing segment">
+    <div class="ui clearing orange segment">
       <h3 class="ui horizontal divider header">
-        <i class="book icon"></i>
-        Your Book
+        <i class="folder icon"></i>
+        Your Folder
       </h3>
+      <recipeblock recipedata="{ recipeData }" accountdata="{ accountData }" type="folder"></recipeblock>
     </div>
   </div>
 
@@ -22,22 +23,21 @@
       if (user) {
         this.uid = user.uid;
         this.update()
-        myrecipe(this.recipeData,this.uid);
+        myrecipe(opts.recipeData,this.uid,'auth');
       } else {
 
       }
     });
 
     const recipes = firebase.database().ref('recipeData');
-    this.recipeData = {};
     recipes.on('value', (recipe) => {
       if(recipe.val()) {
-        $(".viewLoadCon").hide();
-        $(".viewrecipe").fadeIn();
+        this.recipeData = opts.recipeData;
         this.recipeData = recipe.val();
-        myrecipe(this.recipeData,this.uid);
+        console.log(recipe.val());
+        if (!this.uid){ this.uid = opts.user.uid; }
         this.update();
-        // console.log(this.recipeData);
+        myrecipe(this.recipeData,this.uid,'recipe');
       }else{
       }
     });
@@ -48,13 +48,14 @@
       if(account.val()) {
         this.accountData = account.val();
         this.update();
-        // console.log(this.accountData);
       }else{
       }
     });
 
-    const myrecipe = (data,uid) => {
+    const myrecipe = (data,uid,type) => {
       var newobj = {};
+      console.log(type);
+      console.log(data);
 
       Object.keys(data).forEach(function (key) {
         if (data[key].creatorId == uid){

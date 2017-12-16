@@ -20,7 +20,14 @@
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         window.userData = user;
-        this.update();
+      }
+    });
+
+    const recipes = firebase.database().ref('recipeData');
+    recipes.on('value', (recipe) => {
+      if(recipe.val()) {
+        window.recipeData = recipe.val();
+      }else{
       }
     });
 
@@ -39,7 +46,7 @@
       mounthing('app-auth');
     });
     route('/mypage', () => {
-      mounthing('app-mypage');
+      mounthing('app-mypage', { user : window.userData, recipeData : window.recipeData });
     });
     route('/viewrecipe', () => {
       mounthing('app-viewrecipe', { keyword : '' }, {viewrecipe : 1});
