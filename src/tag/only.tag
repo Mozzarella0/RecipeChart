@@ -6,7 +6,7 @@
     <div class="ui clearing segment">
       <h2 class="ui horizontal divider header">{ window.onlyobj.recipeData.recipeName }</h2>
       <div class="ui equal width center aligned grid">
-        <div class="sixteen wide column">
+        <div class="sixteen wide column" style="white-space:pre-wrap;">
           <h4>{ window.onlyobj.recipeData.recipeComment }</h4>
         </div>
           <flowchart name="view"></flowchart>

@@ -1,61 +1,108 @@
 <app-writerecipe>
   <div class="ui container">
-    <div class="ui clearing segment">
+    <div class="ui attached segment">
       <div class="ui equal width grid">
         <div class="sixteen wide column">
-
-          <div class="ui form clearing segment">
+          <div class="ui form">
             <h2 class="ui  horizontal divider header">Write Recipe</h2>
-            <div class="field">
-              <label>レシピの名前</label>
-              <div class="ui left icon input">
-                <i class="book icon"></i>
-                <input placeholder="type here" ref="recipeName" value="NewRecipe"></input>
+            <div class="ui segments">
+              <div class="ui secondary segment">
+                概要
               </div>
-            </div>
-            <div class="field">
-              <label>コメント</label>
-              <div class="ui left icon input">
-                <i class="comment outline icon"></i>
-                <input placeholder="type here" ref="recipeComment"></input>
+              <div class="ui clearing segment">
+                <div class="field">
+                  <label>レシピの名前</label>
+                  <div class="ui left icon input">
+                    <i class="book icon"></i>
+                    <input placeholder="type here" ref="recipeName" value="NewRecipe"></input>
+                  </div>
+                </div>
+                <div class="field">
+                  <label>コメント</label>
+                  <textarea placeholder="type here" ref="recipeComment" rows="2"></textarea>
+                </div>
               </div>
             </div>
           </div>
 
         </div>
-        <button class="ui fluid orange button btn-text" onClick="{ add }">Done</button>
-        <p></p>
+        <div class="sixteen wide column">
+          <div class="ui segments">
+            <div class="ui secondary segment">
+              <i class="cubes icon"></i>
+              材料
+            </div>
+            <div class="ui attached segment">
+              <div class="ui form">
+                <div class="field">
+                  <div class="ui left input">
+                    <input placeholder="例：〇人前" ref="person"></input>
+                  </div>
+                </div>
+                <div class="two fields">
+                  <div class="field">
+                    <input placeholder="例：水" ref="person"></input>
+                  </div>
+                  <div class="field">
+                    <input placeholder="例：1L" ref="person"></input>
+                  </div>
+                </div>
+                <div class="two fields">
+                  <div class="field">
+                    <input placeholder="例：塩" ref="person"></input>
+                  </div>
+                  <div class="field">
+                    <input placeholder="例：300g" ref="person"></input>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ui attached inverted orange btn-text button" tabindex="0">
+              <i class="plus icon"></i>
+            </div>
+          </div>
+
+        </div>
+
         <div class="equal width row">
           <div class="column">
             <div class="ui form">
-              <div class="ui clearing segment">
-                <h3 class="ui horizontal divider header">Process</h3>
-                <process></process>
-              </div>
+              <h3 class="ui horizontal divider header">
+                <i class="list icon"></i>
+                処理
+              </h3>
+              <process></process>
+            </div>
+            <div class="ui two buttons">
+              <button class="ui attached inverted orange button" data-tooltip="プロセスの追加" data-position="bottom center" onclick="{ addProcess }">
+                <i class="plus icon"></i>
+              </button>
+              <button class="ui attached inverted orange button" data-tooltip="プロセスの削除" data-position="bottom center" onclick="{ dltProcess }">
+                <i class="minus icon"></i>
+              </button>
             </div>
           </div>
           <div class="column">
             <div class="ui form">
-              <h3 class="ui horizontal divider header">View</h3>
-              <flowchart name="write"></flowchart>
+              <h3 class="ui horizontal divider header">
+                <i class="lightning icon"></i>
+                チャート
+              </h3>
+              <div class="ui attached segment">
+                <flowchart name="write"></flowchart>
+              </div>
+              <div class="ui attached inverted orange btn-text button" data-tooltip="更新" data-position="bottom center" onclick="{ refresh }">
+                <i class="refresh icon" ></i>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="ui attached orange btn-text button" tabindex="0" onClick="{ add }">
+      Done
+    </div>
 
-  </div>
-
-  <div class="plusMinusMenu">
-    <div data-tooltip="更新" data-position="left center" onclick="{ refresh }">
-      <i class="big circular refresh link orange icon" ></i>
-    </div>
-    <div data-tooltip="プロセスの追加" data-position="left center" onclick="{ addProcess }">
-      <i class="big circular plus link orange icon"></i>
-    </div>
-    <div data-tooltip="プロセスの削除" data-position="left center" onclick="{ dltProcess }">
-      <i class="big circular minus link orange icon"></i>
-    </div>
   </div>
 
 
@@ -135,12 +182,6 @@
   </script>
 
   <style>
-
-    .plusMinusMenu {
-      position: fixed;
-      top: 80%;
-      left: 90%;
-    }
 
   </style>
 </app-writerecipe>
