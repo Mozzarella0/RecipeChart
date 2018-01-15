@@ -1,8 +1,8 @@
 <flowchart>
   <div class="ui container">
     <div each="{ key, i in window.flowChartData }" class="outside">
-      <div class="{ key.processName }">
-        <i onclick="{ showModal.bind(key) }" style="cursor: pointer;">{ key.content }</i>
+      <div class="{ key.processName }" onclick="{ showModal.bind(key) }">
+        <i style="cursor: pointer;">{ key.content }</i>
       </div>
       <div class="ui basic modal { window.recipeId + ' ' + i}">
         <div class="header">

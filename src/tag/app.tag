@@ -14,8 +14,9 @@
     import './viewrecipe.tag';
     import './only.tag';
     import './flowchart/flowchart.tag';
-    import './flowchart/process.tag'
-    import './recipeblock/recipeblock.tag'
+    import './flowchart/process.tag';
+    import './flowchart/material.tag';
+    import './recipeblock/recipeblock.tag';
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

@@ -29,7 +29,6 @@
         <div class="sixteen wide column">
           <div class="ui segments">
             <div class="ui secondary segment">
-              <i class="cubes icon"></i>
               材料
             </div>
             <div class="ui attached segment">
@@ -39,29 +38,18 @@
                     <input placeholder="例：〇人前" ref="person"></input>
                   </div>
                 </div>
-                <div class="two fields">
-                  <div class="field">
-                    <input placeholder="例：水" ref="person"></input>
-                  </div>
-                  <div class="field">
-                    <input placeholder="例：1L" ref="person"></input>
-                  </div>
-                </div>
-                <div class="two fields">
-                  <div class="field">
-                    <input placeholder="例：塩" ref="person"></input>
-                  </div>
-                  <div class="field">
-                    <input placeholder="例：300g" ref="person"></input>
-                  </div>
-                </div>
+                <material></material>
               </div>
             </div>
-            <div class="ui attached inverted orange btn-text button" tabindex="0">
-              <i class="plus icon"></i>
+            <div class="ui two buttons">
+              <div class="ui attached inverted orange btn-text button" tabindex="0" onClick="{ addMaterial }">
+                <i class="plus icon"></i>
+              </div>
+              <div class="ui attached inverted orange btn-text button" tabindex="0" onClick="{ dltMaterial }">
+                <i class="minus icon"></i>
+              </div>
             </div>
           </div>
-
         </div>
 
         <div class="equal width row">
@@ -111,34 +99,47 @@
     import route from 'riot-route';
     import './flowchart/flowchart.tag';
     import './flowchart/process.tag';
+    import './flowchart/material.tag';
 
     var processName = ["terminal", "process", "decision", "inout", "loop-s", "loop-e"];
     window.flowChartData = {0: { content : "開始", detail : "", processName : "terminal"} };
+    window.materialData = {0: { materialName : "", amount : ""} };
     window.recipeId = 'write';
     var num = 1;
+    var material_number = 1;
 
-
-    const objRefresh = () => { //処理内容の更新関数
-      for(var i=0; num > i; i++){
-        var formRadio = i + '_radio_';
-        var formContent = i + '_content';
-        var formDetail = i + '_content_detail';
-        for(var j=0; processName.length > j; j++){
-          var gr = formRadio + processName[j];
-          if(document.getElementById(gr).checked) break;
+    const objRefresh = (type) => { //処理内容の更新関数
+      if ( type == 'flowchart' ) {
+        for(var i=0; num > i; i++){
+          var formRadio = i + '_radio_';
+          var formContent = i + '_content';
+          var formDetail = i + '_content_detail';
+          for(var j=0; processName.length > j; j++){
+            var gr = formRadio + processName[j];
+            if(document.getElementById(gr).checked) break;
+          }
+          var obj = {};
+          obj.processName = processName[j];
+          obj.content = document.getElementById(formContent).value;
+          obj.detail = document.getElementById(formDetail).value;
+          window.flowChartData[i] = obj;
         }
-        var obj = {};
-        obj.processName = processName[j];
-        obj.content = document.getElementById(formContent).value;
-        obj.detail = document.getElementById(formDetail).value;
-        window.flowChartData[i] = obj;
+      } else if ( type == 'material') {
+        for(var j=0; material_number > j; j++){
+          var formMaterialName = j + '_materialName';
+          var formAmount = j + '_amount';
+          var obj = {};
+          obj.materialName = document.getElementById(formMaterialName).value;
+          obj.amount = document.getElementById(formAmount).value;
+          window.materialData[j] = obj;
+        }
       }
     }
 
     const textRef = firebase.database().ref('/recipeData');
 
     this.addProcess = () => { //処理の追加
-      objRefresh();
+      objRefresh('flowchart');
       var obj = {};
       obj.processName = obj.content = obj.detail = "";
       window.flowChartData[num++] = obj;
@@ -146,18 +147,33 @@
     };
 
     this.dltProcess = () => { //処理の削除
-      objRefresh();
+      objRefresh('flowchart');
       delete window.flowChartData[--num];
       this.update();
     };
 
     this.refresh = () => { //見た目の更新
-      objRefresh();
+      objRefresh('flowchart');
+      this.update();
+    };
+
+    this.addMaterial = () => {
+      objRefresh('material');
+      var obj = {};
+      obj.materialName = obj.amount = "";
+      window.materialData[material_number++] = obj;
+      this.update();
+    };
+
+    this.dltMaterial = () => {
+      objRefresh('material');
+      delete window.materialData[--material_number];
       this.update();
     };
 
     this.add = () => {
-      objRefresh();
+      objRefresh('flowchart');
+      objRefresh('material');
       const date = new Date();
       const year = date.getFullYear();
       const month = date.getMonth()+1;
@@ -168,11 +184,13 @@
       var comment = this.refs.recipeComment.value;
       if (name == "") {name = 'NewRecipe';}
       if (comment == "") {comment = 'No Comment...';}
+      window.materialData.person = this.refs.person.value;
       textRef.push({
         creatorId : window.userData.uid,
         recipeName : name,
         recipeComment : comment,
         recipeContent : window.flowChartData,
+        material : window.materialData,
         date : year + '/' + month + '/' + day + ' ' + hour + ':' + minute
       });
       route('viewrecipe');

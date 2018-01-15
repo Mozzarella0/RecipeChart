@@ -1,0 +1,36 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'watch' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.2
+4 verbose run-script [ 'prewatch', 'watch', 'postwatch' ]
+5 info lifecycle recipe-chart@1.0.0~prewatch: recipe-chart@1.0.0
+6 silly lifecycle recipe-chart@1.0.0~prewatch: no script for prewatch, continuing
+7 info lifecycle recipe-chart@1.0.0~watch: recipe-chart@1.0.0
+8 verbose lifecycle recipe-chart@1.0.0~watch: unsafe-perm in lifecycle true
+9 verbose lifecycle recipe-chart@1.0.0~watch: PATH: D:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;Z:\github\RecipeChart\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\ffmpeg\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\xampp\php;D:\xampp\mysql\bin;C:\pg\Java\jdk1.8.0_102\bin;D:\Program Files\nodejs\;D:\Program Files\PostgreSQL\9.6\bin;D:\ffmpeg\bin;C:\Program Files\Git\cmd;D:\php;D:\composer;D:\Program Files\MySQL\MySQL Utilities 1.6\;D:\Ruby23\bin;D:\Users\Mozzarella\AppData\Local\Programs\Python\Python36-32\Scripts\;D:\Users\Mozzarella\AppData\Local\Programs\Python\Python36-32\;C:\Users\Mozzarella\AppData\Local\Microsoft\WindowsApps;C:\Users\Mozzarella\AppData\Local\atom\bin;C:\Users\Mozzarella\AppData\Roaming\Composer\vendor\bin;C:\Users\Mozzarella\AppData\Local\GitHubDesktop\bin;C:\Users\Mozzarella\AppData\Roaming\npm;D:\Program Files\PostgreSQL\9.6\bin;D:\ffmpeg\bin;Z:\Program Files\Heroku\bin;D:\php;;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps
+10 verbose lifecycle recipe-chart@1.0.0~watch: CWD: Z:\github\RecipeChart
+11 silly lifecycle recipe-chart@1.0.0~watch: Args: [ '/d /s /c', 'webpack --watch --progress --colors' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at exports._errnoException (util.js:1020:11)
+12 verbose stack     at process.kill (internal/process.js:190:13)
+12 verbose stack     at process.listener (D:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at emitNone (events.js:91:20)
+12 verbose stack     at process.emit (events.js:185:7)
+12 verbose stack     at processEmit (D:\Program Files\nodejs\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at processEmit (D:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:146:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:217:44)
+13 verbose cwd Z:\github\RecipeChart
+14 error Windows_NT 10.0.16299
+15 error argv "D:\\Program Files\\nodejs\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "watch"
+16 error node v6.11.2
+17 error npm  v3.10.10
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
