@@ -54,7 +54,7 @@
                 設定
               </a>
               <div class="ui divider"></div>
-              <a class="item" onclick="{ signout }">
+              <a class="item" onclick="{ signout }" href="/">
                 <i class="sign out icon" ></i>
                 ログアウト
               </a>
@@ -82,6 +82,7 @@
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        console.log(user);
         this.displayName = user.displayName;
         this.photoURL = user.photoURL;
         this.user = true;
@@ -94,11 +95,12 @@
     this.signout = () => {
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
-        this.isUser = true;
-        route('/');
+        this.isUser = false;
+
       }).catch(function(error) {
         // An error happened.
       });
+      location.reload();
     };
 
     this.showLoginModal = () => {

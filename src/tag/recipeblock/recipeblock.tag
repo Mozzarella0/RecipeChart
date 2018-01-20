@@ -1,7 +1,7 @@
 <recipeblock>
   <div class="ui two column grid">
     <div each="{ key,data in recipeData}" class="column" >
-      <div class="ui tall stacked segment">
+      <div class="ui segment">
         <div class="{ data }">
           <a class="ui right corner label" href="" onclick="{ addfavo.bind(key, data) }" if="{ !key.favo }">
             <div data-tooltip="Add Myfolder">
@@ -119,3 +119,4 @@
 
   </style>
 </recipeblock>
+コメントを追加
