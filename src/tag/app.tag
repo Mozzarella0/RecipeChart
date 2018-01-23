@@ -21,6 +21,16 @@
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         window.userData = user;
+        const textRef = firebase.database().ref(`/account/${user.uid}`);
+        if (!user.displayName){
+          var displayName = user.email;
+        } else {
+          var displayName = user.displayName;
+        }
+        textRef.update({
+          displayName : displayName
+        });
+      this.update();
       }
     });
 
@@ -28,6 +38,15 @@
     recipes.on('value', (recipe) => {
       if(recipe.val()) {
         window.recipeData = recipe.val();
+      }else{
+      }
+    });
+
+    const accounts = firebase.database().ref('account');
+      accounts.on('value', (account) => {
+      if(account.val()) {
+        window.accountData = account.val();
+        this.update();
       }else{
       }
     });
@@ -47,16 +66,16 @@
       mounthing('app-auth');
     });
     route('/mypage', () => {
-      mounthing('app-mypage', { user : window.userData, recipeData : window.recipeData });
+      mounthing('app-mypage');
     });
     route('/viewrecipe', () => {
       mounthing('app-viewrecipe', { keyword : '' }, {viewrecipe : 1});
     });
     route('/writerecipe', () => {
-      mounthing('app-writerecipe', 0, {writerecipe : 1});
+      mounthing('app-writerecipe', { load : true }, {writerecipe : 1});
     });
     route('/viewonly/*', () => {
-      mounthing('app-only', 0, {viewrecipe : 1});
+      mounthing('app-only', 0, { viewrecipe : 1 });
     });
 
   </script>

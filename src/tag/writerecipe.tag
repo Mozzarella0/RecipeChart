@@ -38,14 +38,26 @@
                     <input placeholder="例：〇人前" ref="person"></input>
                   </div>
                 </div>
-                <material></material>
+
+                <div class="two fields" each="{ key, i in materialData }">
+                  <div class="field">
+                    <input if="{ i == 0 }" placeholder="例：肉" value="{ key.materialName }" ref="{ i + '_materialName' }"></input>
+                    <input if="{ i != 0 }" value="{ key.materialName }" ref="{ i + '_materialName' }"></input>
+                  </div>
+                  <div class="field">
+                    <input if="{ i == 0 }" placeholder="例：500g" value="{ key.amount }" ref="{ i + '_amount' }"></input>
+                    <input if="{ i != 0 }" value="{ key.amount }" ref="{ i + '_amount' }"></input>
+
+                  </div>
+                </div>
+
               </div>
             </div>
             <div class="ui two buttons">
-              <div class="ui attached inverted orange btn-text button" tabindex="0" onClick="{ addMaterial }">
+              <div class="ui attached inverted orange btn-text button" data-tooltip="材料の追加" data-position="bottom center" tabindex="0" onClick="{ addMaterial }">
                 <i class="plus icon"></i>
               </div>
-              <div class="ui attached inverted orange btn-text button" tabindex="0" onClick="{ dltMaterial }">
+              <div class="ui attached inverted orange btn-text button" data-tooltip="材料の削除" data-position="bottom center" tabindex="0" onClick="{ dltMaterial }">
                 <i class="minus icon"></i>
               </div>
             </div>
@@ -99,12 +111,11 @@
     import route from 'riot-route';
     import './flowchart/flowchart.tag';
     import './flowchart/process.tag';
-    import './flowchart/material.tag';
 
     var processName = ["terminal", "process", "decision", "inout", "loop-s", "loop-e"];
     window.flowChartData = {0: { content : "開始", detail : "", processName : "terminal"} };
-    window.materialData = {0: { materialName : "", amount : ""} };
     window.recipeId = 'write';
+    this.materialData = {0: { materialName : "", amount : ""} };
     var num = 1;
     var material_number = 1;
 
@@ -129,11 +140,12 @@
           var formMaterialName = j + '_materialName';
           var formAmount = j + '_amount';
           var obj = {};
-          obj.materialName = document.getElementById(formMaterialName).value;
-          obj.amount = document.getElementById(formAmount).value;
-          window.materialData[j] = obj;
+          obj.materialName = this.refs[formMaterialName].value;
+          obj.amount = this.refs[formAmount].value;
+          this.materialData[j] = obj;
         }
       }
+      this.update();
     }
 
     const textRef = firebase.database().ref('/recipeData');
@@ -161,13 +173,13 @@
       objRefresh('material');
       var obj = {};
       obj.materialName = obj.amount = "";
-      window.materialData[material_number++] = obj;
+      this.materialData[material_number++] = obj;
       this.update();
     };
 
     this.dltMaterial = () => {
       objRefresh('material');
-      delete window.materialData[--material_number];
+      delete this.materialData[--material_number];
       this.update();
     };
 
@@ -184,13 +196,13 @@
       var comment = this.refs.recipeComment.value;
       if (name == "") {name = 'NewRecipe';}
       if (comment == "") {comment = 'No Comment...';}
-      window.materialData.person = this.refs.person.value;
+      this.materialData.person = this.refs.person.value;
       textRef.push({
         creatorId : window.userData.uid,
         recipeName : name,
         recipeComment : comment,
         recipeContent : window.flowChartData,
-        material : window.materialData,
+        material : this.materialData,
         date : year + '/' + month + '/' + day + ' ' + hour + ':' + minute
       });
       route('viewrecipe');

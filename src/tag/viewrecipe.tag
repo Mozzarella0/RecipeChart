@@ -3,15 +3,11 @@
     <div class="ui clearing segment">
       <h2 class="ui  horizontal divider header">View Recipe</h2>
       <recipeblock recipedata="{ recipeData }" accountdata="{ accountData }"></recipeblock>
+
     </div>
   </div>
 
 
-  <div class="viewLoadCon">
-    <div class="ui active inverted dimmer">
-      <div class="ui large text loader">Loading</div>
-    </div>
-  </div>
 
   <script>
     import firebase from '../firebase-config';
@@ -21,7 +17,6 @@
     this.recipeData = {};
     recipes.on('value', (recipe) => {
       if(recipe.val()) {
-        $(".viewLoadCon").hide();
         $(".viewrecipe").fadeIn();
         this.recipeData = recipe.val();
         this.update();
@@ -67,10 +62,6 @@
   </script>
 
   <style>
-    .viewLoadCon{
-      position: fixed;
-      margin-left: 50%;
-      margin-top: 40%;
-    }
+
   </style>
 </app-viewrecipe>

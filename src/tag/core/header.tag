@@ -41,8 +41,10 @@
         <div if="{ window.userData }"> <!-- ユーザーメニュードロップダウン -->
 
           <div class="ui simple dropdown">
-            <img class="ui avatar image" src="{ window.userData.photoURL }"></img>
-            <span class="username">{ window.userData.displayName } さん</span>
+            <img class="ui avatar image" if="{ window.userData.photoURL }" src="{ window.userData.photoURL }"></img>
+            <img class="ui avatar image" if="{ !window.userData.photoURL }" src="https://firebasestorage.googleapis.com/v0/b/recipechart.appspot.com/o/first.jpg?alt=media&token=4b792e41-7119-46fc-b248-4208084d930d"></img>
+            <span class="username" if="{ window.userData.displayName }">{ window.userData.displayName } さん</span>
+            <span class="username" if="{ !window.userData.displayName }">{ window.userData.email }</span>
             <i class="dropdown icon"></i>
             <div class="menu">
               <a class="item" href="/mypage">
@@ -82,24 +84,19 @@
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
-        this.displayName = user.displayName;
-        this.photoURL = user.photoURL;
-        this.user = true;
-        this.update()
-      } else {
-
+        window.userData = user;
+        this.update();
       }
     });
 
     this.signout = () => {
       firebase.auth().signOut().then(function() {
         // Sign-out successful.
-        this.isUser = false;
-
+        delete window.userData;
       }).catch(function(error) {
         // An error happened.
       });
+      route('/');
       location.reload();
     };
 

@@ -1,14 +1,21 @@
 <app-only>
   <div class="ui container">
-    <div class="recipeMenu">
-      <i class="big circular arrow left link orange icon" onclick="{ back }"></i>
-    </div>
     <div class="ui clearing segment">
       <h2 class="ui horizontal divider header">{ window.onlyobj.recipeData.recipeName }</h2>
-      <div class="ui equal width center aligned grid">
-        <div class="sixteen wide column" style="white-space:pre-wrap;">
-          <h4>{ window.onlyobj.recipeData.recipeComment }</h4>
+      <div class="ui two column grid">
+        <div class="ui center aligned column">
+          <div class="sixteen wide column" style="white-space:pre-wrap;">
+            <h4>{ window.onlyobj.recipeData.recipeComment }</h4>
+          </div>
         </div>
+        <div class="ui center aligned column">
+          <h4>{ person }</h4>
+          <div each="{ key, data in window.onlyobj.recipeData.material }">
+            { key.materialName } : { key.amount }
+          </div>
+        </div>
+      </div>
+      <div class="ui equal width center aligned grid">
           <flowchart name="view"></flowchart>
           <p></p>
       </div>
@@ -20,18 +27,15 @@
   </div>
 
   <script>
-    import route from 'riot-route';
-
-    const arr = window.onlyobj.recipeData.recipeContent;
+    var arr = window.onlyobj.recipeData.recipeContent;
     window.flowChartData = {};
     for(var key in arr){
       window.flowChartData[key] = arr[key];
     }
-    window.flowChartData.recipeId = window.onlyobj.recipeId
-
-    this.back = () => {
-      route('viewrecipe');
-    };
+    window.flowChartData.recipeId = window.onlyobj.recipeId;
+    this.person = window.onlyobj.recipeData.material.person;
+    delete window.onlyobj.recipeData.material.person;
+    console.log(window.onlyobj.recipeData.material);
   </script>
 
   <style>
